@@ -3,13 +3,13 @@ pipeline {
     tools {
         maven "maven"   
     }    
-    stages {
+    /*stages {
         stage('Build stage') {
             steps {
                 sh 'mvn clean package'
             }
         }
-       /* stage("Sonar Code Analysis"){
+        stage("Sonar Code Analysis"){
             steps{
                withSonarQubeEnv('sonar'){
                     sh 'mvn sonar:sonar'
