@@ -3,8 +3,8 @@ pipeline {
     tools {
         maven "maven"   
     }    
-    /*stages {
-        stage('Build stage') {
+    stages {
+       /* stage('Build stage') {
             steps {
                 sh 'mvn clean package'
             }
