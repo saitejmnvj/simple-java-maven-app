@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven "Maven"   
+        maven "maven"   
     }    
     stages {
         stage('Build stage') {
@@ -12,14 +12,14 @@ pipeline {
         stage("Sonar Code Analysis"){
             steps{
                withSonarQubeEnv('sonar'){
-                    sh 'mvn sonar:sonar -Pprofile1'
+                    sh 'mvn sonar:sonar'
                     //org.codehaus.mojo:sonar-maven-plugin::sonar can alternatively used for sonar:sonar
                 }
             }
         }
         stage('nexus upload'){
             steps{
-            nexusArtifactUploader artifacts: [[artifactId: 'hexagon', classifier: '', file: '/var/lib/jenkins/workspace/SonarQube/target/hexagon-1.0-Hexagon.jar', type: 'jar']], credentialsId: '44c0662e-9030-4882-8aa3-b804b1a41316', groupId: 'hexagon6', nexusUrl: '18.224.155.110:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'devopstraining', version: '1.0-Hexagon'      
+            nexusArtifactUploader artifacts: [[artifactId: 'my-app', classifier: '', file: '/var/lib/jenkins/workspace/sample1/target/my-app-1.0-SNAPSHOT.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'com.mycompany.app', nexusUrl: '127.0.0.1:8081', nexusVersion: 'nexus2', protocol: 'http', repository: 'samplerepo', version: '1.0-jenkins'      
             }
         }
      
