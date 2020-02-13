@@ -23,6 +23,10 @@
     <plugins>
       <plugin>
         <!-- Build an executable JAR -->
+        <configuration>
+        <fork>true</fork>
+        <executable>/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.amzn2.0.1.x86_64/jre/bin/java</executable>
+    </configuration>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
